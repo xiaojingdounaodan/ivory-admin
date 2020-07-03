@@ -1,0 +1,17 @@
+
+.card-header {
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  border-bottom: solid 1px #dcdfe6;
+  display: flex;
+
+  .card-title {
+    height: 100%;
+    text-align: center;
+    margin: auto 0;
+  }
+
+  .card-button {
+    margin-left: auto;
+  }
+}
