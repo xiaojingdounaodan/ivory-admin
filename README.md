@@ -31,6 +31,14 @@
 </p>
 
 <h2>项目预览（部分展示）</h2>
+<h3>前台首页</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/front-index.png"/>
+</p>
+<h3>诊所详情</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/clinicdetail-front.png"/>
+</p>
 <h3>后台登录</h3>
 <p>
   <img src="https://schoolgezhi.cn/cdn/img/backgroud-login.png"/>
