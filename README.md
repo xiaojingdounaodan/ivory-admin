@@ -30,7 +30,11 @@
 <img src="https://schoolgezhi.cn/cdn/img/BlueToothFunction.png"/>
 </p>
 
-<h2>项目预览（可点击查看大图）</h2>
+<h2>项目预览（部分展示）</h2>
+<h3>后台登录</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/backgroud-login.png"/>
+</p>
 <h3>医生工作台（控制台）</h3>
 <p>
   <img src="https://schoolgezhi.cn/cdn/img/dashboard-doctor.jpg"/>
@@ -47,6 +51,11 @@
 <h3>个人资料</h3>
 <p>
   <img src="https://schoolgezhi.cn/cdn/img/user-detail.jpg"/>
+</p>
+
+<h3>医生认证</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/certification.png"/>
 </p>
 
 <h3>诊所信息</h3>
