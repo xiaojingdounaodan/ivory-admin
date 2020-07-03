@@ -17,7 +17,7 @@
 
 </p>
 <p>
-技术选型：前端基于<a href="https://github.com/vuejs/vue"> vue</a> 和 <a href="https://github.com/ElemeFE/element">element-ui</a>，后端基于php框架laravel，如果想对本项目进行扩展，你需要先学习使用这几门技术
+技术选型：前端基于<a href="https://github.com/vuejs/vue"> vue</a> 和 <a href="https://github.com/ElemeFE/element">element-ui</a>，后端基于php框架laravel，如果想对本项目进行扩展，你需要先学习使用这几门技术。
 </p>
 <p>
 后端项目地址：<a href="https://github.com/samnyan/ivory-laravel">https://github.com/samnyan/ivory-laravel</a>
@@ -84,14 +84,43 @@ npm install --registry=https://registry.npm.taobao.org
 npm run dev</pre>
 </p>
 
-<h2>目录结构</h2>
+<h2>关键目录</h2>
 <p>
   <ul>
-    <li>api：所有的角色的http请求js文件</li>
-    <li>assets：图片文件</li>
-     <li>components：elementui组件</li>
-    <li>directive：角色权限定义</li>
-     <li>filters：过滤器</li>
-    </ul>
-  
+    <li>api：所有的http请求接口</li>
+    <li>components：elementui组件</li>
+    <li>routers：路由<li/>
+    <li>store：缓存<li/>
+    <li>views：全部页面<li/>
+  </ul>
 </p>
+
+<h2>权限验证</h2>
+<p>由于本项目涉及到不同的角色，且有些角色具有相同的功能，因此权限验证可以帮助高效地实现功能复用！</p>
+<p>你可以在routers文件下的index.js中设置权限，如下所示，你可以轻松的在role中设置角色，则表示该角色可以访问该页面。当然，角色以数组形式存放，可以添加多个</p>
+<pre>
+  {
+    path: '/permission',
+    component: Layout,
+    name: '用户管理',
+    meta: { role: ['professor','doctor'] }, //表示医生和专家都可访问
+    children: [
+    { 
+      path: 'index',
+      component: Permission,
+      name: '权限测试页',
+      meta: { role: ['professor'] }  //只有专家可访问
+    }]
+  },
+</pre>
+
+<h2>非PHP方案</h2>
+<p>由于本项目使用的是前后端分离，所以后端只需要提供API即可，跟什么编程语言无瓜（疯狂暗示），只需要在前端修改成你所需的API接口即可正常使用</p>
+<code>注：本项目有默认的一套接口方案，<a href="https://ivory.msm.moe/docs/#info">可点击此处参考</a>，后端只需要提供对应的接口即可上手使用，也可以选择本项目默认提供的PHP后端方案：<a href="https://github.com/samnyan/ivory-laravel">https://github.com/samnyan/ivory-laravel</a></code>
+
+<h2>打赏</h2>
+<p>如果本项目对你有帮助，就请我们喝一杯奶茶呗~</p>
+<p align="center">
+  <img src="https://schoolgezhi.cn/cdn/img/donate.png" width=200 />
+</p>
+
