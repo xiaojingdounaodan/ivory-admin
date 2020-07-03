@@ -9,7 +9,7 @@
 <img src="https://img.shields.io/badge/npm-v3.0.0-orange.svg" />
 </p>
 
-<h2 align="center">BlueTooth 蓝牙医学-后台管理</h2>
+<h2 align="center">BlueTooth 蓝牙医疗-后台管理</h2>
 
 <h2>项目简介</h2>
 <p>本项目的应用场景是某牙齿矫治器定制厂家的网站，其功能目的是提供牙医与厂家的交互平台，网站涉及三个角色：游客、牙医、专家(网站管理员)。
@@ -116,7 +116,7 @@ npm run dev</pre>
 
 <h2>非PHP方案</h2>
 <p>由于本项目使用的是前后端分离，所以后端只需要提供API即可，跟什么编程语言无瓜（疯狂暗示），只需要在前端修改成你所需的API接口即可正常使用</p>
-<code>注：本项目有默认的一套接口方案，<a href="https://ivory.msm.moe/docs/#info">可点击此处参考</a>，后端只需要提供对应的接口即可上手使用，也可以选择本项目默认提供的PHP后端方案：<a href="https://github.com/samnyan/ivory-laravel">https://github.com/samnyan/ivory-laravel</a></code>
+<code>注：本项目有默认的一套接口方案，<a href="https://ivory.msm.moe/docs/#info">可点击此处参考</a>，默认提供的PHP后端项目：<a href="https://github.com/samnyan/ivory-laravel">https://github.com/samnyan/ivory-laravel</a></code>
 
 <h2>打赏</h2>
 <p>如果本项目对你有帮助，就请我们喝一杯奶茶呗~</p>
