@@ -30,7 +30,7 @@
 <img src="https://schoolgezhi.cn/cdn/img/BlueToothFunction.png"/>
 </p>
 
-<h2>项目预览</h2>
+<h2>项目预览（可点击查看大图）</h2>
 <h3>医生工作台（控制台）</h3>
 <p>
   <img src="https://schoolgezhi.cn/cdn/img/dashboard-doctor.jpg"/>
@@ -59,6 +59,11 @@
   <img src="https://schoolgezhi.cn/cdn/img/clinic-detail.jpg" />
 </p>
 
+<h3>患者详情</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/patient-detail.jpg" />
+</p>
+
 <h2>使用准备</h2>
 <p>
 
@@ -79,4 +84,14 @@ npm install --registry=https://registry.npm.taobao.org
 npm run dev</pre>
 </p>
 
-<h2>项目结构</h2>
+<h2>目录结构</h2>
+<p>
+  <ul>
+    <li>api：所有的角色的http请求js文件</li>
+    <li>assets：图片文件</li>
+     <li>components：elementui组件</li>
+    <li>directive：角色权限定义</li>
+     <li>filters：过滤器</li>
+    </ul>
+  
+</p>
