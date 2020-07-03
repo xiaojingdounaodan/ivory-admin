@@ -13,7 +13,7 @@
 
 <h2>项目简介</h2>
 <p>本项目的应用场景是某牙齿矫治器定制厂家的网站，其功能目的是提供牙医与厂家的交互平台，网站涉及三个角色：游客、牙医、专家(网站管理员)。
-<code>根据需求专家和网站管理员的功能具有高度相似性,因此就放在一起了</code>
+<code>根据需求，专家和网站管理员的功能具有高度相似性,因此就放在一起了</code>
 
 </p>
 <p>
@@ -28,6 +28,30 @@
 
 <p align="center">
 <img src="https://schoolgezhi.cn/cdn/img/BlueToothFunction.png"/>
+</p>
+
+<h2>项目预览</h2>
+<h3>医生工作台（控制台）</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/dashboard-doctor.jpg"/>
+</p>
+<h3>查询订单</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/order-table.jpg"/>
+</p>
+<h3>患者列表</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/patient-doctor.jpg"/>
+</p>
+
+<h3>个人资料</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/user-detail.jpg"/>
+</p>
+
+<h3>病例列表</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/cases-doctor.jpg"/>
 </p>
 
 <h2>使用准备</h2>
@@ -49,3 +73,5 @@ npm install --registry=https://registry.npm.taobao.org
 <span class="pl-c"><span class="pl-c">#</span> 启动服务</span>
 npm run dev</pre>
 </p>
+
+<h2>项目结构</h2>
