@@ -20,6 +20,9 @@
 技术选型：前端基于<a href="https://github.com/vuejs/vue">vue</a> 和 <a href="https://github.com/ElemeFE/element">element-ui</a>，后端基于php框架laravel，如果想对本项目进行扩展，你需要先学习使用这几门技术
 </p>
 <p>
+后端项目地址：<a href="https://github.com/samnyan/ivory-laravel">https://github.com/samnyan/ivory-laravel</a>
+</p>
+<p>
 项目分为前台和后台两个部分，由于时间原因，前台做的十分简陋，重点放在后台的制作，系统的功能模块大致如下图所示
 </p>
 
