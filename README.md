@@ -17,7 +17,7 @@
 
 </p>
 <p>
-技术选型：前端基于<a href="https://github.com/vuejs/vue">vue</a> 和 <a href="https://github.com/ElemeFE/element">element-ui</a>，后端基于php框架laravel，如果想对本项目进行扩展，你需要先学习使用这几门技术
+技术选型：前端基于<a href="https://github.com/vuejs/vue"> vue</a> 和 <a href="https://github.com/ElemeFE/element">element-ui</a>，后端基于php框架laravel，如果想对本项目进行扩展，你需要先学习使用这几门技术
 </p>
 <p>
 后端项目地址：<a href="https://github.com/samnyan/ivory-laravel">https://github.com/samnyan/ivory-laravel</a>
@@ -51,7 +51,12 @@
 
 <h3>病例列表</h3>
 <p>
-  <img src="https://schoolgezhi.cn/cdn/img/cases-doctor.jpg"/>
+  <img src="https://schoolgezhi.cn/cdn/img/cases-doctor.jpg" />
+</p>
+
+<h3>诊所信息</h3>
+<p>
+  <img src="https://schoolgezhi.cn/cdn/img/clinic-detail.jpg" />
 </p>
 
 <h2>使用准备</h2>
