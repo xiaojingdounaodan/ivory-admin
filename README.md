@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-<img src="https://camo.githubusercontent.com/b07168720c736b9a308a82f7ba5502f37e491779/68747470733a2f2f696d672e736869656c64732e696f2f636972636c6563692f70726f6a6563742f6769746875622f7675656a732f7675652f6465762e7376673f73616e6974697a653d74727565" alt="Build Status" data-canonical-src="https://img.shields.io/circleci/project/github/vuejs/vue/dev.svg?sanitize=true" style="max-width:100%;">
+<img src="https://schoolgezhi.cn/cdn/img/buildpass.svg" />
 <img src="https://camo.githubusercontent.com/608dd8517bbaed6004fe246dbbf96f1cfdfd0a32/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f6c2f7675652e7376673f73616e6974697a653d74727565" alt="License" data-canonical-src="https://img.shields.io/npm/l/vue.svg?sanitize=true" style="max-width:100%;">
 <img src="https://img.shields.io/badge/author-shadow%20%26%20samnyan-blue.svg" />
 <img src="https://img.shields.io/badge/npm-v3.0.0-orange.svg" />
