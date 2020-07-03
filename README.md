@@ -49,11 +49,6 @@
   <img src="https://schoolgezhi.cn/cdn/img/user-detail.jpg"/>
 </p>
 
-<h3>病例列表</h3>
-<p>
-  <img src="https://schoolgezhi.cn/cdn/img/cases-doctor.jpg" />
-</p>
-
 <h3>诊所信息</h3>
 <p>
   <img src="https://schoolgezhi.cn/cdn/img/clinic-detail.jpg" />
@@ -89,9 +84,9 @@ npm run dev</pre>
   <ul>
     <li>api：所有的http请求接口</li>
     <li>components：elementui组件</li>
-    <li>routers：路由<li/>
-    <li>store：缓存<li/>
-    <li>views：全部页面<li/>
+    <li>routers：路由</li>
+    <li>store：缓存</li>
+    <li>views：全部页面</li>
   </ul>
 </p>
 
