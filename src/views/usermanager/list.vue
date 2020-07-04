@@ -69,7 +69,7 @@
           <el-image
             style="width: 100px; height: 100px"
             :src="staticHost+role.certificate"
-            :preview-src-list="[role.certificate]"
+            :preview-src-list="[staticHost+role.certificate]"
           />
         </el-form-item>
         <el-form-item label="用户描述">
@@ -92,7 +92,6 @@
 </template>
 
 <script>
-import path from 'path'
 import { deepClone } from '@/utils'
 import { addRole, deleteRole, getDoctors, updateDoctor } from '@/api/role'
 
@@ -100,7 +99,8 @@ const defaultRole = {
   key: '',
   name: '',
   description: '',
-  routes: []
+  routes: [],
+  head_portrait: ''
 }
 
 export default {
@@ -135,11 +135,6 @@ export default {
       staticHost: process.env.VUE_APP_STATIC_FILE_HOST
     }
   },
-  computed: {
-    routesData() {
-      return this.routes
-    }
-  },
   created() {
     this.getDoctors()
   },
@@ -151,7 +146,7 @@ export default {
     },
     // 审核
     isAudit(state) {
-      updateDoctor(this.role.id, state).then(resp => {
+      updateDoctor(this.role.id, state).then(() => {
         this.$notify({
           title: 'Success',
           dangerouslyUseHTMLString: true,
@@ -218,26 +213,6 @@ export default {
         this.role.key = data.key
         this.rolesList.push(this.role)
       }
-    },
-    // reference: src/view/layout/components/Sidebar/SidebarItem.vue
-    onlyOneShowingChild(children = [], parent) {
-      let onlyOneChild = null
-      const showingChildren = children.filter(item => !item.hidden)
-
-      // When there is only one child route, the child route is displayed by default
-      if (showingChildren.length === 1) {
-        onlyOneChild = showingChildren[0]
-        onlyOneChild.path = path.resolve(parent.path, onlyOneChild.path)
-        return onlyOneChild
-      }
-
-      // Show parent if there are no child route to display
-      if (showingChildren.length === 0) {
-        onlyOneChild = { ...parent, path: '', noShowingChildren: true }
-        return onlyOneChild
-      }
-
-      return false
     }
   }
 }

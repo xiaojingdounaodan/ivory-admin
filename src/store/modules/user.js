@@ -1,7 +1,6 @@
-import {login, logout, getInfo} from '@/api/user'
-import {getToken, setToken, removeToken} from '@/utils/auth'
-import router, {resetRouter} from '@/router'
-import de from "element-ui/src/locale/lang/de";
+import { login, logout, getInfo } from '@/api/user'
+import { getToken, setToken, removeToken } from '@/utils/auth'
+import router, { resetRouter } from '@/router'
 
 const state = {
   token: getToken(),
@@ -16,7 +15,7 @@ const state = {
   user: null,
   mobile: '',
   certificate: '',
-  clinic: '',
+  clinic: ''
 }
 
 const mutations = {
@@ -63,10 +62,10 @@ const mutations = {
 
 const actions = {
   // 登录方法
-  login({commit}, userInfo) {
-    const {email, password} = userInfo
+  login({ commit }, userInfo) {
+    const { email, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({email: email.trim(), password: password}).then(response => {
+      login({ email: email.trim(), password: password }).then(response => {
         const data = response.data
         if (data.access_token !== '' && data.access_token !== null) {
           commit('SET_TOKEN', data.access_token)
@@ -80,28 +79,28 @@ const actions = {
   },
 
   // get user info
-  getInfo({commit, state}) {
+  getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
-        const {data} = response
+        const { data } = response
         if (!data) {
           reject('校验失败，请重新登录')
         }
 
         const user_type = data.type
-        let roles = []
+        const roles = []
         switch (user_type) {
           case 0:
             roles.push('doctor')
-            break;
+            break
           case 2:
-            roles.push('professor');
-            break;
+            roles.push('professor')
+            break
           case 3:
-            roles.push('admin');
-            break;
+            roles.push('admin')
+            break
           default:
-            break;
+            break
         }
         // roles must be a non-empty array
         if (!roles || roles.length <= 0) {
@@ -119,7 +118,7 @@ const actions = {
         commit('SET_PHONE', data.mobile)
         commit('SET_CERTIFICATE', data.certificate)
         commit('SET_USER', data)
-        //证书状态 0未提交 1正在审核  2已认证
+        // 证书状态 0未提交 1正在审核  2已认证
         resolve(data)
       }).catch(error => {
         reject(error)
@@ -128,9 +127,8 @@ const actions = {
   },
 
   // user logout
-  logout({commit, state, dispatch}) {
+  logout({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
-
       logout(state.token).then(() => {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
@@ -139,7 +137,7 @@ const actions = {
 
         // reset visited views and cached views
         // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
-        dispatch('tagsView/delAllViews', null, {root: true})
+        dispatch('tagsView/delAllViews', null, { root: true })
 
         resolve()
       }).catch(error => {
@@ -149,7 +147,7 @@ const actions = {
   },
 
   // remove token
-  resetToken({commit}) {
+  resetToken({ commit }) {
     return new Promise(resolve => {
       commit('SET_TOKEN', '')
       commit('SET_ROLES', [])
@@ -159,25 +157,25 @@ const actions = {
   },
 
   // dynamically modify permissions
-  changeRoles({commit, dispatch}, role) {
+  changeRoles({ commit, dispatch }, role) {
     return new Promise(async resolve => {
       const token = role + '-token'
 
       commit('SET_TOKEN', token)
       setToken(token)
 
-      const {roles} = await dispatch('getInfo')
+      const { roles } = await dispatch('getInfo')
 
       resetRouter()
 
       // generate accessible routes map based on roles
-      const accessRoutes = await dispatch('permission/generateRoutes', roles, {root: true})
+      const accessRoutes = await dispatch('permission/generateRoutes', roles, { root: true })
 
       // dynamically add accessible routes
       router.addRoutes(accessRoutes)
 
       // reset visited views and cached views
-      dispatch('tagsView/delAllViews', null, {root: true})
+      dispatch('tagsView/delAllViews', null, { root: true })
 
       resolve()
     })
