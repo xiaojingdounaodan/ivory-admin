@@ -134,7 +134,7 @@ export default {
               this.loading = false
             })
         } else {
-          console.log('错误的提交！')
+          this.$message.error('输入有误哦~')
           return false
         }
       })

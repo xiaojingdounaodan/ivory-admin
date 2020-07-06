@@ -1,14 +1,25 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="listQuery.title" placeholder="请输入交易号搜索" style="width: 200px;" class="filter-item"
-                @keyup.enter.native="handleFilter"/>
+      <el-input
+        v-model="listQuery.title"
+        placeholder="请输入交易号搜索"
+        style="width: 200px;"
+        class="filter-item"
+        @keyup.enter.native="handleFilter"
+      />
 
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         搜索
       </el-button>
-      <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download"
-                 @click="handleDownload">
+      <el-button
+        v-waves
+        :loading="downloadLoading"
+        class="filter-item"
+        type="primary"
+        icon="el-icon-download"
+        @click="handleDownload"
+      >
         导出
       </el-button>
     </div>
@@ -23,8 +34,13 @@
       style="width: 100%;"
       @sort-change="sortChange"
     >
-      <el-table-column label="订单ID" prop="id" sortable="custom" align="center"
-                       :class-name="getSortClass('id')">
+      <el-table-column
+        label="订单ID"
+        prop="id"
+        sortable="custom"
+        align="center"
+        :class-name="getSortClass('id')"
+      >
         <template slot-scope="scope">
           <span>{{ scope.row.id }}</span>
         </template>
@@ -32,37 +48,37 @@
 
       <el-table-column label="物流号" align="center" prop="tracking_number">
         <template slot-scope="scope">
-          <span>{{scope.row.tracking_number}}</span>
+          <span>{{ scope.row.tracking_number }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="交易号" align="center" prop="pay_number">
         <template slot-scope="scope">
-          <span>{{scope.row.pay_number}}</span>
+          <span>{{ scope.row.pay_number }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="订单价格" align="center" prop="total_price">
         <template slot-scope="scope">
-          <span>{{scope.row.total_price}}</span>
+          <span>{{ scope.row.total_price }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="实付款" align="center" prop="payment_price">
         <template slot-scope="scope">
-          <span>{{scope.row.payment_price}}</span>
+          <span>{{ scope.row.payment_price }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="备注" align="center" prop="comments">
         <template slot-scope="scope">
-          <span>{{scope.row.comments}}</span>
+          <span>{{ scope.row.comments }}</span>
         </template>
       </el-table-column>
 
       <el-table-column label="订单状态" align="center" prop="state">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.state  | statusFilter">{{scope.row.state | stateNameFilter}}</el-tag>
+          <el-tag :type="scope.row.state | statusFilter">{{ scope.row.state | stateNameFilter }}</el-tag>
         </template>
       </el-table-column>
 
@@ -71,37 +87,45 @@
           <el-button type="primary" size="mini" @click="handleView(scope.row)">
             查看详情
           </el-button>
-          <el-button type="success" size="mini" @click="handleView(scope.row)" v-show="scope.row.state ===0">
+          <el-button v-show="scope.row.state ===0" type="success" size="mini" @click="handleView(scope.row)">
             付款
           </el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit"
-                @pagination="getList"/>
+    <pagination
+      v-show="total>0"
+      :total="total"
+      :page.sync="listQuery.page"
+      :limit.sync="listQuery.limit"
+      @pagination="getList"
+    />
 
-    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <el-form label-width="70px"
-               style="width: 400px; margin-left:50px;" v-loading="formLoading" label-position="left"
-               v-for="(order,index) in temp.order_detail" :key="index">
+    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible" :width="screenWidth">
+      <el-form
+        v-for="(order,index) in temp.order_detail"
+        :key="index"
+        v-loading="formLoading"
+        label-width="70px"
+        style="width: 400px; margin-left:50px;"
+        label-position="left"
+      >
 
         <el-form-item label="器械编号" prop="product_count">
-          <el-input v-model="temp.order_detail[index].product_no" disabled/>
+          <el-input v-model="temp.order_detail[index].product_no" disabled />
         </el-form-item>
 
         <el-form-item label="器械名称" prop="product_name">
-          <el-input v-model="temp.order_detail[index].product_name" disabled/>
+          <el-input v-model="temp.order_detail[index].product_name" disabled />
         </el-form-item>
 
         <el-form-item label="数量" prop="product_count">
-          <el-input v-model="temp.order_detail[index].product_count" disabled/>
+          <el-input v-model="temp.order_detail[index].product_count" disabled />
         </el-form-item>
         <el-form-item label="单价" prop="product_price">
-          <el-input v-model="temp.order_detail[index].product_price" disabled/>
+          <el-input v-model="temp.order_detail[index].product_price" disabled />
         </el-form-item>
-
-
 
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -113,8 +137,8 @@
 
     <el-dialog :visible.sync="dialogPvVisible" title="Reading statistics">
       <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
-        <el-table-column prop="key" label="Channel"/>
-        <el-table-column prop="pv" label="Pv"/>
+        <el-table-column prop="key" label="Channel" />
+        <el-table-column prop="pv" label="Pv" />
       </el-table>
       <span slot="footer" class="dialog-footer">
         <el-button type="primary" @click="dialogPvVisible = false">Confirm</el-button>
@@ -124,228 +148,220 @@
 </template>
 
 <script>
-  import {fetchList, fetchPv, getOrderByIdFromDoctor, getOrdersByDoctor} from '@/api/doctor'
-  import waves from '@/directive/waves' // waves directive
-  import {parseTime} from '@/utils'
-  import Pagination from '@/components/Pagination'
-  import {getDoctorById} from "@/api/role";
-  import {getOrderByIdFromProfessor, updateOrderByIdFromProfessor} from "@/api/professor";
+import { getOrderByIdFromDoctor, getOrdersByDoctor } from '@/api/doctor'
+import waves from '@/directive/waves' // waves directive
+import { parseTime } from '@/utils'
+import Pagination from '@/components/Pagination'
+import { getDoctorById } from '@/api/role'
 
-  export default {
-    name: 'OrderTable',
-    components: {Pagination},
-    directives: {waves},
-    filters: {
-      statusFilter(state) {
-        switch (state) {
-          case -1:
-            return "info"
-          case 0:
-            return "danger"
-          case 1:
-            return "success"
-          case 2:
-            return ""
-          case 3:
-            return "success"
-          case 4:
-            return "warning"
-          case 5:
-            return "info"
-          default:
-            return "info"
-        }
-      },
-      stateNameFilter(state) {
-        switch (state) {
-          case -1:
-            return "取消交易"
-          case 0:
-            return "未付款"
-          case 1:
-            return "已付款"
-          case 2:
-            return "已发货"
-          case 3:
-            return "已签收"
-          case 4:
-            return "退货申请"
-          case 5:
-            return "退货中"
-          case 6:
-            return "已退货"
-        }
-      },
-      doctorFilter(id) {
-        getDoctorById(id).then(resp => {
-          return resp.data.username
-        })
+export default {
+  name: 'OrderTable',
+  components: { Pagination },
+  directives: { waves },
+  filters: {
+    statusFilter(state) {
+      switch (state) {
+        case -1:
+          return 'info'
+        case 0:
+          return 'danger'
+        case 1:
+          return 'success'
+        case 2:
+          return ''
+        case 3:
+          return 'success'
+        case 4:
+          return 'warning'
+        case 5:
+          return 'info'
+        default:
+          return 'info'
       }
     },
-    data() {
-      return {
-        tableKey: 0,
-        orderList: null,
-        total: 0,
-        listLoading: true,
-        formLoading: true,
-        listQuery: {
-          page: 1,
-          limit: 20,
-          importance: undefined,
-          title: undefined,
-          type: undefined,
-          sort: '+id'
-        },
-        importanceOptions: [1, 2, 3],
-        currentStatus: '',
-        statusOptions: [
-          {
-            state: -1,
-            name: '取消交易'
-          },
-          {
-            state: 0,
-            name: '未付款'
-          },
-          {
-            state: 1,
-            name: '已付款'
-          },
-          {
-            state: 2,
-            name: '已发货'
-          },
-          {
-            state: 3,
-            name: '已签收'
-          },
-          {
-            state: 4,
-            name: '退货申请'
-          },
-          {
-            state: 5,
-            name: '退货中'
-          },
-          {
-            state: 6,
-            name: '已退货'
-          }],
-        //初始化弹出窗数据
-        temp: {
-          order_detail: [
-            {
-              product_name: "",
-              product_count: 0,
-              product_no:"",
-              product_price:0
-            }
-          ]
-        },
-        dialogFormVisible: false,
-        dialogStatus: '',
-        textMap: {
-          update: '查看订单',
-          create: '创建订单'
-        },
-        dialogPvVisible: false,
-        pvData: [],
-        downloadLoading: false
+    stateNameFilter(state) {
+      switch (state) {
+        case -1:
+          return '取消交易'
+        case 0:
+          return '未付款'
+        case 1:
+          return '已付款'
+        case 2:
+          return '已发货'
+        case 3:
+          return '已签收'
+        case 4:
+          return '退货申请'
+        case 5:
+          return '退货中'
+        case 6:
+          return '已退货'
       }
     },
-    created() {
+    doctorFilter(id) {
+      getDoctorById(id).then(resp => {
+        return resp.data.username
+      })
+    }
+  },
+  data() {
+    return {
+      screenWidth: '',
+      tableKey: 0,
+      orderList: null,
+      total: 0,
+      listLoading: true,
+      formLoading: true,
+      listQuery: {
+        page: 1,
+        limit: 20,
+        importance: undefined,
+        title: undefined,
+        type: undefined,
+        sort: '+id'
+      },
+      importanceOptions: [1, 2, 3],
+      currentStatus: '',
+      statusOptions: [
+        {
+          state: -1,
+          name: '取消交易'
+        },
+        {
+          state: 0,
+          name: '未付款'
+        },
+        {
+          state: 1,
+          name: '已付款'
+        },
+        {
+          state: 2,
+          name: '已发货'
+        },
+        {
+          state: 3,
+          name: '已签收'
+        },
+        {
+          state: 4,
+          name: '退货申请'
+        },
+        {
+          state: 5,
+          name: '退货中'
+        },
+        {
+          state: 6,
+          name: '已退货'
+        }],
+      // 初始化弹出窗数据
+      temp: {
+        order_detail: [
+          {
+            product_name: '',
+            product_count: 0,
+            product_no: '',
+            product_price: 0
+          }
+        ]
+      },
+      dialogFormVisible: false,
+      dialogStatus: '',
+      textMap: {
+        update: '查看订单',
+        create: '创建订单'
+      },
+      dialogPvVisible: false,
+      pvData: [],
+      downloadLoading: false
+    }
+  },
+  created() {
+    this.getList()
+    this.getWidth()
+  },
+  methods: {
+    getWidth() {
+      const clientWidth = document.body.clientWidth // 屏幕宽
+      clientWidth <= 500 ? this.screenWidth = '100%' : this.screenWidth = '50%'
+    },
+    getList() {
+      this.listLoading = true
+      getOrdersByDoctor(this.listQuery.page).then(response => {
+        this.orderList = response.data.data
+        this.total = response.data.total
+        this.listLoading = false
+      })
+    },
+    handleFilter() {
+      this.listQuery.page = 1
       this.getList()
     },
-    methods: {
-      getList() {
-        this.listLoading = true
-        getOrdersByDoctor(this.listQuery.page).then(response => {
-          this.orderList = response.data.data
-          this.total = response.data.total
-          this.listLoading = false
-        })
-      },
-      handleFilter() {
-        this.listQuery.page = 1
-        this.getList()
-      },
-      handleModifyStatus(row, status) {
-        this.$message({
-          message: '操作Success',
-          type: 'success'
-        })
-        row.status = status
-      },
-      sortChange(data) {
-        const {prop, order} = data
-        if (prop === 'id') {
-          this.sortByID(order)
+    handleModifyStatus(row, status) {
+      this.$message({
+        message: '操作Success',
+        type: 'success'
+      })
+      row.status = status
+    },
+    sortChange(data) {
+      const { prop, order } = data
+      if (prop === 'id') {
+        this.sortByID(order)
+      }
+    },
+    sortByID(order) {
+      if (order === 'ascending') {
+        this.listQuery.sort = '+id'
+      } else {
+        this.listQuery.sort = '-id'
+      }
+      this.handleFilter()
+    },
+    resetTemp() {
+      this.temp = {
+        id: 1,
+        created_at: null,
+        updated_at: null,
+        clinic_id: 1,
+        professor_id: 1,
+        doctor_id: 2,
+        patient_case_id: 1,
+        is_first: 1,
+        state: 0,
+        product_count: 0,
+        total_price: 0,
+        payment_price: 0,
+        shipping_fee: 0,
+        pay_number: '',
+        pay_time: '',
+        tracking_number: '',
+        address_id: 1,
+        comments: '',
+        doctor: {
+          username: null
         }
-      },
-      sortByID(order) {
-        if (order === 'ascending') {
-          this.listQuery.sort = '+id'
-        } else {
-          this.listQuery.sort = '-id'
-        }
-        this.handleFilter()
-      },
-      resetTemp() {
-        this.temp = {
-          id: 1,
-          created_at: null,
-          updated_at: null,
-          clinic_id: 1,
-          professor_id: 1,
-          doctor_id: 2,
-          patient_case_id: 1,
-          is_first: 1,
-          state: 0,
-          product_count: 0,
-          total_price: 0,
-          payment_price: 0,
-          shipping_fee: 0,
-          pay_number: "",
-          pay_time: "",
-          tracking_number: "",
-          address_id: 1,
-          comments: "",
-          doctor: {
-            username: null
-          },
-        }
-      },
-      handleCreate() {
-        this.resetTemp()
+      }
+    },
+    handleCreate() {
+      this.resetTemp()
+      this.formLoading = false
+      this.dialogStatus = 'create'
+      this.dialogFormVisible = true
+    },
+    handleView(row) {
+      this.formLoading = true
+      getOrderByIdFromDoctor(row.id).then(resp => {
+        this.temp = resp.data
         this.formLoading = false
-        this.dialogStatus = 'create'
-        this.dialogFormVisible = true
-      },
-      createData() {
-        this.temp.id = parseInt(Math.random() * 100) + 1024 // mock a id
-        createArticle(this.temp).then(() => {
-          this.orderList.unshift(this.temp)
-          this.dialogFormVisible = false
-          this.$notify({
-            title: 'Success',
-            message: 'Created Successfully',
-            type: 'success',
-            duration: 2000
-          })
-        })
-      },
-      handleView(row) {
-        this.formLoading = true
-        getOrderByIdFromDoctor(row.id).then(resp => {
-          this.temp = resp.data
-          this.formLoading = false
-        })
-        this.dialogStatus = 'update'
-        this.dialogFormVisible = true
-      },
-      handleDownload() {
-        this.downloadLoading = true
+      })
+      this.dialogStatus = 'update'
+      this.dialogFormVisible = true
+    },
+    handleDownload() {
+      this.downloadLoading = true
         import('@/vendor/Export2Excel').then(excel => {
           const tHeader = ['timestamp', 'title', 'type', 'importance', 'status']
           const filterVal = ['timestamp', 'title', 'type', 'importance', 'status']
@@ -357,20 +373,20 @@
           })
           this.downloadLoading = false
         })
-      },
-      formatJson(filterVal) {
-        return this.list.map(v => filterVal.map(j => {
-          if (j === 'timestamp') {
-            return parseTime(v[j])
-          } else {
-            return v[j]
-          }
-        }))
-      },
-      getSortClass: function (key) {
-        const sort = this.listQuery.sort
-        return sort === `+${key}` ? 'ascending' : 'descending'
-      }
+    },
+    formatJson(filterVal) {
+      return this.list.map(v => filterVal.map(j => {
+        if (j === 'timestamp') {
+          return parseTime(v[j])
+        } else {
+          return v[j]
+        }
+      }))
+    },
+    getSortClass: function(key) {
+      const sort = this.listQuery.sort
+      return sort === `+${key}` ? 'ascending' : 'descending'
     }
   }
+}
 </script>
