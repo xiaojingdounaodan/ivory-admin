@@ -112,7 +112,6 @@ export default {
       return isImg
     },
     uploadSuccess(resp) {
-      this.patient.photo_url = this.staticHost + resp.photo_url
       this.$message.success(resp.message)
     },
     fetchData(id) {
@@ -130,7 +129,7 @@ export default {
         if (valid) {
           this.loading = true
           if (this.isEdit) {
-            updatePatient(this.id, this.patientForm).then(resp => {
+            updatePatient(this.id, this.patientForm).then(() => {
               this.$notify({
                 title: '成功',
                 message: '更新患者成功',
