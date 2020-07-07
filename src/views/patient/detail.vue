@@ -139,7 +139,8 @@ export default {
         name: null,
         age: null,
         sex: null,
-        comments: null
+        comments: null,
+        patient_cases: null
       },
       loading: true,
       headers: {

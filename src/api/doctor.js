@@ -12,6 +12,11 @@ const config = {
   }
 }
 
+// 创建病人
+export function createPatient(data) {
+  return axios.post(prefixUrl + 'doctor/patient', data, config)
+}
+
 // 病人列表
 export function fetchList(page) {
   return axios.get(prefixUrl + 'doctor/patient?page=' + page, config)
