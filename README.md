@@ -131,7 +131,7 @@ npm run dev</pre>
 </pre>
 
 <h2>非PHP方案</h2>
-<p>由于本项目使用的是前后端分离，所以后端只需要提供API即可，跟什么编程语言无瓜（疯狂暗示），只需要在前端修改成你所需的API接口即可正常使用</p>
+<p>由于本项目使用的是前后端分离，所以后端只需要提供API即可，跟什么编程语言无关，只需要在前端修改成你所需的API接口即可正常使用</p>
 <code>注：本项目有默认的一套接口方案，<a href="https://ivory.msm.moe/docs/#info">可点击此处参考</a>，默认提供的PHP后端项目：<a href="https://github.com/samnyan/ivory-laravel">https://github.com/samnyan/ivory-laravel</a></code>
 
 <h2>打赏</h2>
